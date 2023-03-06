@@ -9,12 +9,13 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin
 public class RegionRESTController {
 
   @Autowired
   RegionRepository regionRepository;
 
-  @GetMapping("/Region")
+  @GetMapping("/regioner")
   public List<Region> regioner(){
     return regionRepository.findAll();
   }

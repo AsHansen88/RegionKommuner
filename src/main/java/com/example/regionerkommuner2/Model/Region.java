@@ -1,10 +1,15 @@
 package com.example.regionerkommuner2.Model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
-  @Entity
+import java.util.HashSet;
+import java.util.Set;
+
+@Entity
   public class Region {
 
     @Id
@@ -12,6 +17,10 @@ import jakarta.persistence.Id;
     private String kode;
     private String navn;
     private String href;
+
+    @OneToMany(mappedBy = "region")
+    @JsonBackReference
+    private Set<Kommune> Kommuner = new HashSet<>();
 
     public String getKode() {
       return kode;
